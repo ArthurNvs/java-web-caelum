@@ -10,10 +10,10 @@
 	</head>
 	<body>
 		<c:import url="cabecalho.jsp" />
-		<form action="add">
+		<form action="mvc?logica=LogicaAdicionarContato" method="post">
 			Nome: <input type="text" name="nome" /> <br/>
 			Email: <input type="text" name="email" /> <br/>
-			EndereÃ§o: <input type="text" name="endereco" /><br/>
+			Endereço: <input type="text" name="endereco" /><br/>
 			Data de Nascimento: <custom:campoData id="nascimento" /> <br/>
 			
 			<input type="submit" value="Salvar" />

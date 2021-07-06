@@ -1,4 +1,4 @@
-package agenda.services;
+package agenda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -73,12 +74,8 @@ public class AddContatoServlet extends HttpServlet {
 			return;
 		}
 
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Contato de " + contato.getNome() + " salvo com sucesso");
-		out.println("</body>");
-		out.println("</html>");
-
+		RequestDispatcher rd = req.getRequestDispatcher("/contato-adicionado.jsp");
+		rd.forward(req, res);
 	}
 
 }

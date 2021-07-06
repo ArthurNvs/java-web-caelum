@@ -13,17 +13,18 @@
 		<c:import url="cabecalho.jsp" />
 		
 		<!-- cria o DAO -->
-		<jsp:useBean id="dao" class="agenda.dao.ContatoDao"/>
-		
+		<%-- <jsp:useBean id="dao" class="agenda.dao.ContatoDao"/> --%>
+		<a href="mvc?logica=LogicaFormularioContato">Adicionar Novo Contato</a>
 		<table  border="1">
 			<tr bgcolor="#A5FB8 }" >
 				<td>NOME</td>
 				<td>EMAIL</td>
 				<td>ENDEREÇO</td>
 				<td>NASCIMENTO</td>
+				<td>AÇÃO</td>
 			</tr>
 			<!-- percorre contatos montando as linhas da tabela -->
-			<c:forEach var="contato" items="${dao.lista}" varStatus="id">
+			<c:forEach var="contato" items="${contatos}" varStatus="id">
 				<tr bgcolor="#${id.count % 2 == 0 ? '888888' : 'ffffff' }" >
 					<td>${contato.nome}</td>
 					<td>
@@ -32,7 +33,7 @@
 							 	<a href="mailto:${contato.email}">${contato.email}</a>
 							 </c:when>
 							 <c:otherwise>
-								 E-mail não informado
+								 E-mail não informado!
 							 </c:otherwise>
 						 </c:choose>
 					</td>
@@ -40,6 +41,9 @@
 					<td>
 						<fmt:formatDate value="${contato.dataNascimento.time}" 
 										pattern="dd/MM/yyyy" />
+					</td>
+					<td>
+						<a href="mvc?logica=LogicaRemoverContato&id=${contato.id}">Remover id= ${contato.id}</a>
 					</td>
 				</tr>
 			</c:forEach>
