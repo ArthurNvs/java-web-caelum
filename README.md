@@ -1,4 +1,4 @@
-# Java Web main specs
+# Java Web - Basis
 
 Reviewing with this project: 
 * JDBC - DB connection
