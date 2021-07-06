@@ -1,4 +1,4 @@
-# Java Web - Basis
+# Java Web - Basics
 
 Reviewing with this project: 
 * JDBC - DB connection
