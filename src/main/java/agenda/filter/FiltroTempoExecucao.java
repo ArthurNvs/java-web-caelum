@@ -41,7 +41,5 @@ public class FiltroTempoExecucao implements Filter {
 							+ parametros 
 							+ " demorou (ms): "
 							+ (tempoFinal - tempoInicial));
-
 	}
-
 }

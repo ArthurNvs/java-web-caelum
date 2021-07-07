@@ -2,6 +2,7 @@ package agenda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,7 +43,7 @@ public class AddContatoServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
-
+		Connection connection = (Connection) req.getAttribute("conexao");
 		String nome = req.getParameter("nome");
 		String email = req.getParameter("email");
 		String endereco = req.getParameter("endereco");
@@ -66,7 +67,7 @@ public class AddContatoServlet extends HttpServlet {
 
 		
 		try {
-			ContatoDao dao = new ContatoDao();
+			ContatoDao dao = new ContatoDao(connection);
 			dao.addContato(contato);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

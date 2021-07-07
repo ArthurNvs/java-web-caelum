@@ -1,5 +1,6 @@
 package agenda.controller;
 
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,6 +17,8 @@ public class LogicaAdicionarContato implements Logica {
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		Connection connection = (Connection) req.getAttribute("conexao");
 		
 		String nome = req.getParameter("nome");
 		String email = req.getParameter("email");
@@ -38,7 +41,7 @@ public class LogicaAdicionarContato implements Logica {
 		contato.setDataNascimento(dataNascimento);
 		
 		try {
-			ContatoDao dao = new ContatoDao();
+			ContatoDao dao = new ContatoDao(connection);
 			dao.addContato(contato);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

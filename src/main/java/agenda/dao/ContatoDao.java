@@ -17,8 +17,8 @@ public class ContatoDao {
 	private Connection connection;
 	private PreparedStatement stmt;
 
-	public ContatoDao() throws ClassNotFoundException {
-		this.connection = new ConnectionFactory().getConnection();
+	public ContatoDao(Connection connection) throws ClassNotFoundException {
+		this.connection = connection;
 	}
 
 	public void addContato(Contato contato) {
